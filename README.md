@@ -20,4 +20,4 @@ In the train method one iteration with input neurons and expected value(s) is pe
 
 In the final if __name__ == "__main__": condition it is given an example to predict if a person with a given height and weight is normal or obese, with the corresponding training_data and test_data list. Finally it is plotted the error of each element of the test dataset, before and after the training process. The plot is shown below.
 
-![resSwitch-screenshot](https://github.com/danieljosesilva/memristiveWillshawNetworkAndPerceptron/blob/master/images/perceptron.png)
+<img src="https://github.com/danieljosesilva/memristiveWillshawNetworkAndPerceptron/blob/master/images/perceptron.png" height="400" align="middle">
