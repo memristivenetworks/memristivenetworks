@@ -14,13 +14,13 @@ authors: Daniel Silva (djsilva99@gmail.com), Catarina Dias, João Ventura, Paulo
 
 ## Installation <a name="installation"></a>
 
-There are two possible ways to run the code. The first is by simply downloading the running the memristivenetworks folder and by running the .py file, where the simulation conditions are stated and can be changed inside the condition ```if __name__ == "__main__":``` at the end of the file. This condition ensures that the code is only run if the file is run by itself but not if it is imported. The other way is by creating objects and making operations, step by step, in a python shell, which gives a deeper understanding of the algorithm. To import one can either use the python shell inside the memristivenetworks folder or use the pip package management system:
+There are two possible ways to run the code. The first is by simply downloading the memristivenetworks folder and by running the .py file, where the simulation conditions are stated and can be changed inside the condition ```if __name__ == "__main__":``` at the end of the file. This condition ensures that the code is only run if the file is run by itself but not if it is imported. The other way is by creating objects and making operations, step by step, in a python shell, which gives a deeper understanding of the algorithm. To import one can either use the python shell inside the memristivenetworks folder or use the pip package management system:
 
 ```bash
 $ pip install memristivenetworks
 ```
 
-The following tutorial takes into account that the shell is located inside the memristivenetworks folder. To use the memristivenetworks package installed with pip change the import of both willshaw and perceptron classes to:
+The following tutorial takes into account that the shell is located inside the memristivenetworks folder. To use the memristivenetworks package installed with pip import both Willshaw and Perceptron classes with:
 
 ```python
 >>> from memristivenetworks import Willshaw
@@ -30,7 +30,7 @@ The following tutorial takes into account that the shell is located inside the m
 
 ## The memristive Willshaw network <a name="willshaw"></a>
 
-To illustrate with a simple example how a memristor-based Willshaw network works, a simulation example using an algorithm written in python 2.7 is given here. The needed libraries are ```numpy```, ```random``` and ```matplotlib```. The basic example of ```memristiveWillshaw.py``` allows to go through incremental values of stored patterns up to a maximum defined value (PAmax) and perform averages over many simulations (numberSimulations). In the following tutorial one will create objects and make operations, step by step, by importing the memristiveWillshaw package. The defined class called Willshaw allows to create the object network (```__init__```) and make operations with it in a very simple manner (```object.method()```). Opening the python shell in the directory where the .py file is located one must call the Willshaw class with the command ```from memriistiveWillshaw import *``` and initialize one network object using ```willshaw(NB ,NA, MB, MA)```. The size of the network is set by default to ```NB = NA = 128``` and ```MB = MA = 7```, but other values can be specified. This also creates the matrix that keeps the conductance state of each memristor (0 for high resistances and 1 for low resistances), all initially at zero, and two lists for the associations between population A and population B. Thus, an association dictionary is created as well with two entries: ```’B_neurons’``` and ```’A_neurons’```, empty when initiated. To see the attributed of created objects use object.attribute. For a 4×4 network, with size 2 patterns, we then have:
+To illustrate with a simple example how a memristor-based Willshaw network works, a simulation example using an algorithm written in python 2.7 is given here. The needed libraries are ```numpy```, ```random``` and ```matplotlib```. The basic example of ```willshaw.py``` allows to go through incremental values of stored patterns up to a maximum defined value (PAmax) and perform averages over many simulations (numberSimulations). In the following tutorial one will create objects and make operations, step by step, by importing the ```willshaw``` subpackage. The defined class called Willshaw allows to create the object network (```__init__```) and make operations with it in a very simple manner (```object.method()```). Opening the python shell in the directory where the .py file is located one must call the Willshaw class with the command ```from willshaw import *``` and initialize one network object using ```Willshaw(NB ,NA, MB, MA)```. The size of the network is set by default to ```NB = NA = 128``` and ```MB = MA = 7```, but other values can be specified. This also creates the matrix that keeps the conductance state of each memristor (0 for high resistances and 1 for low resistances), all initially at zero, and two lists for the associations between population A and population B. Thus, an association dictionary is created as well with two entries: ```’B_neurons’``` and ```’A_neurons’```, empty when initiated. To see the attributed of created objects use object.attribute. For a 4×4 network, with size 2 patterns, we then have:
 
 ```python
 >>> from willshaw import *
@@ -98,7 +98,6 @@ array([[ 1., 1., 1., 0.],
 The number of correct associations and average number of incorrect units as a function of the number of different written associations can be plotted at the end by saving the read output after each write operation, in a similar way to Figs. 4 and 5 in the main text.
 
 ```python
->>> import matplotlib.pyplot as plt
 >>> x = []
 >>> y = []
 >>> x.append([1])
@@ -134,9 +133,9 @@ The ```threshold``` needs to be lowered (1 in this case) to take into account th
 
 ## The memristive perceptron <a name="perceptron"></a>
 
-To illustrate with a simple example of how a memristor-based perceptron works, a simulation example using an algorithm written in python 2.7 is given here. The needed libraries are ```numpy```, ```matplotlib```, ```pylab``` and ```csv```. In the following tutorial one will create objects and make operations, step by step, by importing the memristivePerceptron package.
+To illustrate with a simple example of how a memristor-based perceptron works, a simulation example using an algorithm written in python 2.7 is given here. The needed libraries are ```numpy```, ```matplotlib```, ```pylab``` and ```csv```. In the following tutorial one will create objects and make operations, step by step, by importing the ```perceptron``` subpackage.
 
-Opening the python shell in the directory where the .py file is located one must use the command ```from memristivePerceptron import *```. To import data from a .csv file or randomly generate data for the weight/height classification example used in the main text, a class called Data was created. If an input file (e.g. ‘data.csv’) is given, the respective ```__init__``` function converts the first N-1 elements of  each row of length N to floating point format and creates a dictionary between the two possible last values (usually in the string format) and the integers ‘0’ and ‘1’, in order to perform calculations. If there is no input file, a given number (```npoints```, set to 20 by default) of pairs (weight, height) are randomly generated, using the BMI=25 criteria for group separation. The function ```folds``` separates the data into the training (```training_data```) and test (```test_data```) datasets, of sizes (1-1/k) and 1/k of total data size, respectively. 
+Opening the python shell in the directory where the .py file is located one must use the command ```from perceptron import *```. To import data from a .csv file or randomly generate data for the weight/height classification example used in the main text, a class called Data was created. If an input file (e.g. ‘BMI.data.csv’) is given, the respective ```__init__``` function converts the first N-1 elements of  each row of length N to floating point format and creates a dictionary between the two possible last values (usually in the string format) and the integers ‘0’ and ‘1’, in order to perform calculations. If there is no input file, a given number (```npoints```, set to 20 by default) of pairs (weight, height) are randomly generated, using the BMI=25 criteria for group separation. The function ```folds``` separates the data into the training (```training_data```) and test (```test_data```) datasets, of sizes (1-1/k) and 1/k of total data size, respectively. 
 
 ```python
 >>> from perceptron import *
